@@ -29,7 +29,7 @@ function getCookie(c_name)
 //Get Lead info, if it exists
 
 //This specifies the cookie name
-var cookieName='NetStart_LEAD_DATA',
+var cookieName='mkto_lead_data',
 
 //This specifies its value: the format will be X=VALUE1_DELIMITER_Y=VALUE2_DELIMITER_Z=VALUE3
 cookieValue='',
@@ -58,15 +58,7 @@ $(document).ready(function() {
 			if ('responseCode' in d && d['responseCode'] == 0 && 'responseMessage' in d) 
 			{
 				var response = d['responseMessage'];
-				for (var i = 0;i<response.length;i++) 
-				{
-					cookieValue+=response[i]['attrName']+'='+response[i]['attrValue']+'_DELIMITER_';
-				}
-				
-				if (response.length>1) {
-					cookieValue=cookieValue.replace(/_DELIMITER_$/,'');
-					setCookie(cookieName,cookieValue,cookieDuration);
-				}
+				setCookie(cookieName,JSON.stringify(response),cookieDuration);
 			} else {
 				console.log('error getting lead data');
 			}

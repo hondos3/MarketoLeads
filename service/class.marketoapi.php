@@ -1,9 +1,11 @@
 <?php
 
+include ($_SERVER['DOCUMENT_ROOT'] . '/service/user-settings.php');
+include ($_SERVER['DOCUMENT_ROOT'] . '/service/api-settings.php');
 //
 // Set this appropriately for your time zone
 //
-date_default_timezone_set('America/Los_Angeles');
+date_default_timezone_set(User_Settings::$my_timezone);
 
 /**
 * MarketoAPI
@@ -22,14 +24,14 @@ class MarketoApi
 		// Your access key, secret key, and SOAP Endpoint are all available in the
 		// Admin section of the Marketo Lead Management appliaction under "SOAP API Setup"
 		//
-		$this->access_key = '';
-		$this->secret_key = '';
+		$this->access_key = API_Settings::$access_key;
+		$this->secret_key = API_Settings::$secret_key;
 		
 		//
 		// The endpoint is in the "SOAP API Setup" page in the Marketo Admin section
 		// ex. $soap_end_point = 'https://xx-1.marketo.com/soap/mktows/';
 		//
-		$soap_end_point = '';
+		$soap_end_point = API_Settings::$my_soap_end_point ;
 
 		//
 		// Errors are sent to this email address.  Your web server
@@ -37,7 +39,7 @@ class MarketoApi
 		//
 		// ex. $this->error_email_address = 'example@example.com';
 		//
-		$this->error_email_address = 'smxbonta@yahoo.com';
+		$this->error_email_address = User_Settings::$error_email_address;
 		
 		$options = array("connection_timeout" => 20, "location" => $soap_end_point);
 		

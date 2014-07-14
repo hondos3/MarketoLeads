@@ -3,16 +3,12 @@
  This is modified from a PHP Marketo SOAP API example from Marketo's SOAP API reference document
  */
 
-/* 
- * The list of attributes to get from this lead
- * You can add/delete attribute names from Marketo here
- */
-$attributes = array('Title','Company','Industry');
+
 
 if(isset($_GET['_mkto_trk'])) {
 	// We only include the Marketo API class if it's needed.
 	include_once($_SERVER['DOCUMENT_ROOT'] . '/service/class.marketoapi.php');
-	
+	include_once($_SERVER['DOCUMENT_ROOT'] . '/service/user-settings.php');
 	/*
 	 * Get Lead info
 	 */
@@ -25,7 +21,7 @@ if(isset($_GET['_mkto_trk'])) {
 		$response = array();
 		//Here are the attributes from marketo for this lead
 		$mkto_attributes = $result->result->leadRecordList->leadRecord->leadAttributeList->attribute;
-		
+		$attributes = User_Settings::$attributes;
 		// Find in mkto_attributes those that are defined in $attributes above
 		foreach ($attributes as $key => $value) {
 			foreach ($mkto_attributes as $mkto_key => $mkto_value) {

@@ -22,14 +22,14 @@ class MarketoApi
 		// Your access key, secret key, and SOAP Endpoint are all available in the
 		// Admin section of the Marketo Lead Management appliaction under "SOAP API Setup"
 		//
-		$this->access_key = 'neustarinc1_073174854C7D76157025F3';
-		$this->secret_key = '099299199710346444CC77DD7766116777006A43AF35';
+		$this->access_key = '';
+		$this->secret_key = '';
 		
 		//
 		// The endpoint is in the "SOAP API Setup" page in the Marketo Admin section
 		// ex. $soap_end_point = 'https://xx-1.marketo.com/soap/mktows/';
 		//
-		$soap_end_point = 'https://401-EDD-684.mktoapi.com/soap/mktows/2_4';
+		$soap_end_point = '';
 
 		//
 		// Errors are sent to this email address.  Your web server

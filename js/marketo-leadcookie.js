@@ -54,7 +54,6 @@ $(document).ready(function() {
 	{
 		$.getJSON(service+'?_mkto_trk='+escape(cookie)).done(function(d)
 		{
-			console.log('D=',d);
 			myRes = d;
 			if ('responseCode' in d && d['responseCode'] == 0 && 'responseMessage' in d) 
 			{

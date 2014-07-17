@@ -9,6 +9,22 @@ class User_Settings {
 	 * The list of attributes to get from this lead
 	 * You can add/delete attribute names from Marketo here
 	 */
-	public static $attributes = array('Title','Company','Industry');
+	
+	/*
+	 * The key are the SOAP API names, the value are the friendly labels to use
+	 * in the cookie
+	 */
+	public static $attributes = array(
+	'Predictive_Lead_Score__c'=>'Predictive Lead Score',
+	'Company'=>'Company Name',
+	'Industry'=>'Industry',
+	'Role__c'=>'Role',
+	'LeadScore'=>'Lead Score',
+	'LeadStatus'=>'Lead Status',
+	'mostRecentBehavior'=>'Most Recent Behavior',
+	"Product_Interest__c"=>'Product Interest',
+	'segmentationBuyingCenter1014'=>'Buying Center Segment',
+	'segmentationVertical1012 Selling'=>'Teams Segment',
+	);
 }
 ?>

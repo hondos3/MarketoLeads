@@ -55,10 +55,22 @@ $(document).ready(function() {
 		$.getJSON(service+'?_mkto_trk='+escape(cookie)).done(function(d)
 		{
 			myRes = d;
-			if ('responseCode' in d && d['responseCode'] == 0 && 'responseMessage' in d) 
+			if ('responseCode' in d && d['responseCode'] == 0 && 'responseMessage' in d && '_attr' in d) 
 			{
-				var response = d['responseMessage'];
-				setCookie(cookieName,JSON.stringify(response),cookieDuration);
+				var _attr = d['_attr'],
+					response = d['responseMessage'],
+					result = {};
+				for (var i in response) {
+					for (var j in _attr)
+					{
+						if (j == response[i].attrName)
+						{
+							result[j] = response[i].attrValue;
+							break;
+						}
+					}
+				}
+				setCookie(cookieName,JSON.stringify(result),cookieDuration);
 			} else {
 				console.log('error getting lead data');
 			}
